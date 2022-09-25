@@ -2,7 +2,7 @@ import { Text } from 'react-native'
 
 function AllExpenses(){
     return (
-        <Text></Text>
+        <Text>TESt</Text>
     )
 }
 

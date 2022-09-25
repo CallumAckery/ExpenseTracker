@@ -2,7 +2,7 @@ import { Text } from 'react-native'
 
 function RecentExpenses(){
     return (
-        <Text></Text>
+        <Text>HI</Text>
     )
 }
 
