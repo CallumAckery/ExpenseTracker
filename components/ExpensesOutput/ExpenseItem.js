@@ -4,13 +4,13 @@ import { StyleSheet} from 'react-native'
 import { GlobalStyles } from "../../constants/styles";
 import { getFormattedDate } from "../../util/date";
 
-function ExpenseItem({description, amount, date}){
+function ExpenseItem({id, description, amount, date}){
 
     /** for navigation to next screen  */
     const navigation = useNavigation();
 
     function expensePressedHandler(){
-       navigation.navigate('Manage Expense', {
+       navigation.navigate('ManageExpense', {
         expenseId: id
        });
     }
