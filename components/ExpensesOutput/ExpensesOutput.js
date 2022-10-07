@@ -22,6 +22,41 @@ const DUMMY_EXP = [
         amount: 5.99,
         date: new Date('2022-09-24'),
     },
+    {
+        id: 'e4',
+        description: 'A piar of boots',
+        amount: 59.99,
+        date: new Date('2022-09-25'),
+    },
+    {
+        id: 'e5',
+        description: 'Trousers',
+        amount: 89.24,
+        date: new Date('2022-09-23'),
+    },{
+        id: 'e6',
+        description: 'Some Apples',
+        amount: 5.99,
+        date: new Date('2022-09-24'),
+    },
+    {
+        id: 'e7',
+        description: 'A piar of boots',
+        amount: 59.99,
+        date: new Date('2022-09-25'),
+    },
+    {
+        id: 'e8',
+        description: 'Trousers',
+        amount: 89.24,
+        date: new Date('2022-09-23'),
+    },
+    {
+        id: 'e9',
+        description: 'Some Apples',
+        amount: 5.99,
+        date: new Date('2022-09-24'),
+    },
 ]
 
 
@@ -40,7 +75,9 @@ export default ExpensesOutput;
 const styles = StyleSheet.create({
 
     container: {
-        padding: 24, 
+        paddingHorizontal:  24,
+        paddingTop: 24, 
+        paddingBottom: 0,
         backgroundColor: GlobalStyles.colors.primary700,
         flex: 1,
 
