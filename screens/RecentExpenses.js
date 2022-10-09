@@ -6,7 +6,7 @@ import { getDateMinusDays } from "../util/date";
 function RecentExpenses(){
         const expensesCtx = useContext(ExpensesContext);
 
-        const recentExpenses = expensesCtx.expenses.filter((expenses) => {
+        const recentExpenses = expensesCtx.expenses.filter((expense) => {
                 const today = new Date();
                 const date7Days = getDateMinusDays(today, 7);
                 return expense.date > date7Days;

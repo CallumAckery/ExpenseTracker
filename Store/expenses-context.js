@@ -5,30 +5,30 @@ const DUMMY_EXP = [
         id: 'e1',
         description: 'A piar of boots',
         amount: 59.99,
-        date: new Date('2022-09-25'),
+        date: new Date('2022-10-09'),
     },
     {
         id: 'e2',
         description: 'Trousers',
         amount: 89.24,
-        date: new Date('2022-09-23'),
+        date: new Date('2022-10-09'),
     },{
         id: 'e3',
         description: 'Some Apples',
         amount: 5.99,
-        date: new Date('2022-09-24'),
+        date: new Date('2022-10-09'),
     },
     {
         id: 'e4',
         description: 'A piar of boots',
         amount: 59.99,
-        date: new Date('2022-09-25'),
+        date: new Date('2022-10-08'),
     },
     {
         id: 'e5',
         description: 'Trousers',
         amount: 89.24,
-        date: new Date('2022-09-23'),
+        date: new Date('2022-10-07'),
     },{
         id: 'e6',
         description: 'Some Apples',
@@ -90,12 +90,12 @@ function ExpensesContextProvider({children}){
         dispatch({ type: 'ADD', data: expenseData });
     }
 
-    function updateExpense(id){
+    function deleteExpense(id){
         dispatch({ type: 'DELETE', data: id });
     }
 
     function updateExpense(id, expenseData){
-        dispatch({ type: 'DELETE', data: { id: id, data: expenseData } });
+        dispatch({ type: 'UPDATE', data: { id: id, data: expenseData } });
     }
 
     const value = {
@@ -105,7 +105,7 @@ function ExpensesContextProvider({children}){
         updateExpense: updateExpense
     };
 
-    return <ExpensesContext.Provider value={value}>{children}</ExpensesContext.Provider>
+    return <ExpensesContext.Provider value={value} >{children}</ExpensesContext.Provider>
 }
  
 

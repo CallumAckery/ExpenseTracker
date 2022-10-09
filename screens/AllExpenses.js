@@ -5,9 +5,8 @@ import { ExpensesContext } from '../Store/expenses-context';
 function AllExpenses(){
     const expensesCtx = useContext(ExpensesContext)
 
-    return (
-        <ExpensesOutput expenses={expensesCtx} expensesPeriod="Total" />
-    )
+    return <ExpensesOutput expenses={expensesCtx} expensesPeriod="Total" />
+    
 }
 
 export default AllExpenses;

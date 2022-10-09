@@ -41,7 +41,8 @@ function ExpensesOverview(){
       }}
         />
       
-      <BottomTabs.Screen name="All Expenses" component={AllExpenses}
+      <BottomTabs.Screen name="All Expenses" 
+        component={AllExpenses}
         options={{ title: 'All Expenses',
         tabBarLabel: 'Expenses',
         tabBarIcon: ({color, size}) => <Ionicons name="calendar" size={size} color={color} />,
@@ -55,17 +56,19 @@ export default function App() {
   return (
     <>
         <StatusBar style="auto" />
-          <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },headerTintColor: 'white' }}>
-              <Stack.Screen 
-                name="Expenses Overview" 
-                component={ExpensesOverview}
-                options={{headerShown: false}}
-                />
+          <ExpensesContextProvider>
+            <NavigationContainer>
+              <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },headerTintColor: 'white' }}>
+                <Stack.Screen 
+                  name="Expenses Overview" 
+                  component={ExpensesOverview}
+                  options={{headerShown: false}}
+                  />
 
-              <Stack.Screen name="ManageExpense" component={ManageExpense}  options={{ presentation: 'modal' }} />
-            </Stack.Navigator>
-          </NavigationContainer>
+                <Stack.Screen name="ManageExpense" component={ManageExpense}  options={{ presentation: 'modal' }} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </ExpensesContextProvider>
     </>
   );
 }
