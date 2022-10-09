@@ -25,11 +25,28 @@ function ManageExpense({route, navigation}){
     }
 
     function cancelHandler() {
+
         navigation.goBack();
     }
 
     function confirmHandler() {
-
+        debugger;
+        if(isEditing){
+            expensesCtx.updateExpense(
+                editedExspenseId,
+                {
+                description: 'Sausage Roll',
+                amount: 1.99,
+                date: new Date('10/10/2022'),
+            });
+        }else{
+            expensesCtx.addExpense({
+                description: 'Toilet Roll',
+                amount: 20.00,
+                date: new Date('10/10/2022'),
+            });
+        }
+        navigation.goBack();
     }
 
     return (
