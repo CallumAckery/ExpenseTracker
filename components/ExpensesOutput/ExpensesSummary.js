@@ -8,11 +8,11 @@ function ExpensesSummary({expenses, periodName}){
       }, 0);
 
     return (
-        
-            <View style={styles.container}>
-                <Text style={styles.period}>{periodName}</Text>
-                <Text style={styles.sum}>£{expensesSum.toFixed(2)}</Text>
-            </View>
+
+    <View style={styles.container}>
+        <Text style={styles.period}>{periodName}</Text>
+        <Text style={styles.sum}>£{expensesSum.toFixed(2)}</Text>
+    </View>
         
     );
 }
