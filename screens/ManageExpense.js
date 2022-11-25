@@ -18,7 +18,7 @@ function ManageExpense({route, navigation}){
         });
     }, [navigation, isEditing]);
 
-
+    /* Deletes the Expense Function */
     function deleteExpenseHandler(){
         expensesCtx.deleteExpense(editedExspenseId);
         navigation.goBack();
