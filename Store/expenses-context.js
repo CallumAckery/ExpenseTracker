@@ -5,7 +5,7 @@ const DUMMY_EXP = [
         id: 'e1',
         description: 'A piar of boots',
         amount: 59.99,
-        date: new Date('2022-10-09'),
+        date: new Date('2022-11-25'),
     },
     {
         id: 'e2',
