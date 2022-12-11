@@ -9,7 +9,6 @@ import ExpenseForm from '../components/ManageExpense/ExepenseForm';
 function ManageExpense({route, navigation}){
     const expensesCtx = useContext(ExpensesContext)
 
-
     const editedExspenseId = route.params?.expenseId;
     const isEditing = !!editedExspenseId;
 
@@ -26,38 +25,25 @@ function ManageExpense({route, navigation}){
     }
 
     function cancelHandler() {
-
         navigation.goBack();
     }
 
-    function confirmHandler() {
-        debugger;
+    function confirmHandler(expenseData) {
+        
         if(isEditing){
-            expensesCtx.updateExpense(
-                editedExspenseId,
-                {
-                description: 'Sausage Roll',
-                amount: 1.99,
-                date: new Date('10/10/2022'),
-            });
+            expensesCtx.updateExpense(editedExspenseId, expenseData);
         }else{
-            expensesCtx.addExpense({
-                description: 'Toilet Roll',
-                amount: 20.00,
-                date: new Date('10/10/2022'),
-            });
+            expensesCtx.addExpense(expenseData);
         }
         navigation.goBack();
     }
 
     return (
         <View style={styles.container}>
-            <ExpenseForm />
-            <View style={styles.buttons}>
-                <Button style={styles.button} mode="flat" onPress={cancelHandler}>Cancel</Button>
-                <Button style={styles.button} onPress={confirmHandler}>{isEditing ? 'Update' : 'Add'}</Button>
-            </View>
-
+            <ExpenseForm submitButtonLabel={isEditing ? 'Update': 'Add'} 
+            onCancel={cancelHandler} 
+            onSubmit={confirmHandler}
+            />
             {isEditing && (    
             <View style={styles.deleteContainer}>
                 <IconButton 
@@ -86,15 +72,5 @@ const styles = StyleSheet.create({
         borderTopWidth: 2,
         borderTopColor: GlobalStyles.colors.primary200,
         alignItems: 'center',
-
-    },
-    buttons: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    button:{
-        minWidth: 120,
-        marginHorizontal: 8,
     }
 });
