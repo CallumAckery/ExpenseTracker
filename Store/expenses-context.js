@@ -5,35 +5,35 @@ const DUMMY_EXP = [
         id: 'e1',
         description: 'A piar of boots',
         amount: 59.99,
-        date: new Date('2022-12-11'),
+        date: new Date('2022-12-19'),
     },
     {
         id: 'e2',
         description: 'Trousers',
         amount: 89.24,
-        date: new Date('2022-12-11'),
+        date: new Date('2022-12-19'),
     },{
         id: 'e3',
         description: 'Some Apples',
         amount: 5.99,
-        date: new Date('2022-12-11'),
+        date: new Date('2022-12-19'),
     },
     {
         id: 'e4',
         description: 'Stuff',
         amount: 59.99,
-        date: new Date('2022-12-11'),
+        date: new Date('2022-12-19'),
     },
     {
         id: 'e5',
         description: 'Jeans',
         amount: 89.24,
-        date: new Date('2022-12-11'),
+        date: new Date('2022-12-19'),
     },{
         id: 'e6',
         description: 'Raspberryies',
         amount: 5.99,
-        date: new Date('2022-12-11'),
+        date: new Date('2022-12-19'),
     },
     {
         id: 'e7',
@@ -56,7 +56,7 @@ const DUMMY_EXP = [
 ]
 
 export const ExpensesContext = createContext({
-    expense: [],
+    expenses: [],
     addExpense: ({description, amount, date}) => {},
     deleteExpense: (id) => {},
     updateExpense: (id, {description, amount, date}) => {},
@@ -82,19 +82,21 @@ function expensesReducer(state, action) {
         return state;
     }
   }
+
+
 function ExpensesContextProvider({children}){
     const [expensesState, dispatch] = useReducer(expensesReducer, DUMMY_EXP);
 
     function addExpense(expenseData) {
-        dispatch({ type: 'ADD', data: expenseData });
+        dispatch({ type: 'ADD', payload: expenseData });
     }
 
     function deleteExpense(id){
-        dispatch({ type: 'DELETE', data: id });
+        dispatch({ type: 'DELETE', payload: id });
     }
 
     function updateExpense(id, expenseData){
-        dispatch({ type: 'UPDATE', data: { id: id, data: expenseData } });
+        dispatch({ type: 'UPDATE', payload: { id: id, data: expenseData } });
     }
 
     const value = {
@@ -104,7 +106,9 @@ function ExpensesContextProvider({children}){
         updateExpense: updateExpense
     };
 
-    return <ExpensesContext.Provider value={value} >{children}</ExpensesContext.Provider>
+    return <ExpensesContext.Provider value={value}>
+        {children}
+    </ExpensesContext.Provider>
 }
  
 
