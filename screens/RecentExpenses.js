@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import ExpensesOutput from "../components/ExpensesOutput/ExpensesOutput";
 import { ExpensesContext } from "../Store/expenses-context";
 import { getDateMinusDays } from "../util/date";
@@ -6,11 +6,14 @@ import { fetchExpenses } from "../util/http";
 
 function RecentExpenses(){
         const expensesCtx = useContext(ExpensesContext);
+        //const [fetchExpenses, setFetchedExpenses] = useState([]);
 
         useEffect(() => {
-                async function getExpenses(){
-                        const expenses = await fetchExpenses();
+           async function getExpenses(){
+                const expenses = await fetchExpenses();
+                expensesCtx.setExpenses(expenses);
            }
+
            getExpenses();
         }, []);
 
@@ -22,9 +25,10 @@ function RecentExpenses(){
 
         return (
                 <ExpensesOutput 
-                        expenses={recentExpenses} 
-                        expensesPeriod="Last 7 Days" 
-                        />
+                expenses={recentExpenses} 
+                expensesPeriod="Last 7 Days" 
+                fallbackText="No expenses registered for the last 7 days."
+                />
         );
 }
 
