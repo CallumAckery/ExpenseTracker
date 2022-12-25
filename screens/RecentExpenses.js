@@ -30,12 +30,10 @@ function RecentExpenses(){
                 return <LoadingOverlay />
         }
 
-        function errorHandler(){
-                setError(null);
-        }
+    
 
         if(error && !isFetching){
-                return <ErrorOverlay message={error} onConfirm={errorHandler} />;
+                return <ErrorOverlay message={error} />;
         }
 
         const recentExpenses = expensesCtx.expenses.filter((expense) => {
